@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Header = () => {
@@ -13,8 +13,20 @@ const Header = () => {
       })
       .catch((err) => console.log(err));
   };
-  //   getApi();
-  return <div className=""></div>;
+
+  useEffect(() => {
+    getApi();
+  }, []);
+
+  return (
+    <div className="w-full min-h-screen flex flex-col justify-center items-center">
+      <div className="bos">
+        {data && (
+          <div className="flex justify-between itmes-center flex-col w[30rem]h-[30rem] text-center bg-blue-300 p-4"></div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Header;
